@@ -1,0 +1,9 @@
+name = 3pl
+description = 3pl.
+package = Custom
+core = 7.x
+configure = admin/config/3pl
+ Information added by Koushik Naikel packaging script on 16/08/2021
+version = "7.50"
+project = "drupal"
+datestamp = "1629095628"

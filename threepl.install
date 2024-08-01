@@ -1,0 +1,44 @@
+<?php
+
+function threepl_schema(){
+    $schema['order3pl'] = array(
+        'description' => 'The table to details to push order in 3PL server.',
+        'fields' => array(
+            'order_id' => array(
+                'description' => 'orderid',
+                'type' => 'int',
+                'not null' => TRUE,
+                'unsigned' => TRUE,
+            ),
+            'order_id_3pl' => array(
+                'description' => 'It will be 0 when not insterted in 3pl server',
+                'type' => 'int',
+                'not null' => TRUE,
+                'unsigned' => TRUE,
+				'default' => 0,
+            ),			
+            'error' => array(
+                'description' => 'Error during pushed',
+                'type' => 'text',
+				'size' => 'big',
+                'not null' => FALSE,
+            ),
+            'created_date' => array(
+                'description' => 'created date time(yyyy-mm-dd H:i:s).',
+                'type' => 'varchar',
+                'mysql_type' => 'DATETIME',
+                'not null' => TRUE,
+            ),
+            'push_status' => array(
+                'description' => 'Push status(1=To be push,0=To stop push, 2=Order pushed, 3=Push to try again, ).',
+                'type' => 'int',
+                'length' => 2,
+                'not null' => TRUE,
+                'default' => 1,
+            ),
+        ),
+        'primary key' => array('order_id'),
+    );
+	variable_set("order3plOrderInitialized",1);
+    return $schema;
+}
